@@ -15,7 +15,16 @@ export default class Application extends EventEmitter {
   }
   setEmojis(emojis) {
     this.emojis = emojis;
+
+    const emojisElement = document.querySelector('#emojis')
+    emojisElement.innerHTML = '';
+
+    const paragraph = document.createElement('p').textContent = this.emojis;
+    emojisElement.append(paragraph);
   }
 
-  addBananas() {}
+  addBananas() {
+    this.emojis = this.emojis.map((monkey) => monkey + this.banana);
+    this.setEmojis(this.emojis);
+  }
 }
